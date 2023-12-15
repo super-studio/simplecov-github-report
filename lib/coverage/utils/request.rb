@@ -15,6 +15,7 @@ module Utils
     #
     # @return [Net::HTTPResponse]
     def post(uri:, body:)
+      puts "Request POST to Github, uri = #{uri}, body = #{body}"
       run(method: Net::HTTP::Post, uri: uri, body: body)
     end
 
@@ -24,6 +25,7 @@ module Utils
     #
     # @return [Net::HTTPResponse]
     def patch(uri:, body:)
+      puts "Request PATCH to Github, uri = #{uri}, body = #{body}"
       run(method: Net::HTTP::Patch, uri: uri, body: body)
     end
 
