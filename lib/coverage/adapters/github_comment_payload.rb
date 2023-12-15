@@ -32,7 +32,7 @@ module Adapters
     # TODO: removed (by #{@coverage_results.minimum_coverage_type})
     def summary
       detailed_summary = ""
-      detailed_summary = "  * #{@coverage_detailed_results.minimum_coverage} minimum coverage per file" if @coverage_detailed_results.enabled?
+      detailed_summary = "  * #{@coverage_detailed_results.minimum_coverage}% minimum coverage per file" if @coverage_detailed_results.enabled?
 
       <<~SUMMARY
         * #{@coverage_results.covered_percent}% covered
