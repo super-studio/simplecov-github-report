@@ -28,7 +28,15 @@ class Configuration
   end
 
   def self.github_repo
-    ENV["GITHUB_REPOSITORY"]
+    ENV["INPUT_GITHUB_REPOSITORY"] || ENV["GITHUB_REPOSITORY"]
+  end
+
+  def self.github_pr_id
+    ENV["INPUT_GITHUB_PR_ID"]
+  end
+
+  def self.github_owner
+    ENV["INPUT_GITHUB_OWNER"]
   end
 
   def self.github_sha
@@ -41,6 +49,11 @@ class Configuration
 
   def self.check_job_name
     ENV["INPUT_CHECK_JOB_NAME"]
+  end
+
+  def self.github_comment_path
+    # ref: https://docs.github.com/en/rest/issues/comments?apiVersion=2022-11-28#create-an-issue-comment
+    "#{github_owner}/#{github_repo}/issues/#{github_pr_id}/comments"
   end
 
   def self.github_api_url

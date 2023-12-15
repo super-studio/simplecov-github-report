@@ -30,4 +30,28 @@ class CheckAction
     # End Check Run
     request_object.patch(uri: formatted_end_check.as_uri, body: formatted_end_check.as_payload)
   end
+
+  def report_to_github_pullrequest(target_files)
+    # Create Check Run
+    request_object = Utils::Request.new(access_token: Configuration.github_token, debug: Configuration.debug_mode?)
+
+    # Parsing SimpleCov result from JSON file
+    coverage_results = Adapters::SimpleCovResult.new(
+      coverage_path: Configuration.coverage_path,
+      minimum_coverage: Configuration.minimum_suite_coverage
+    )
+    coverage_detailed_results = Adapters::SimpleCovJsonResult.new(
+      coverage_json_path: Configuration.coverage_json_path,
+      minimum_coverage: Configuration.minimum_file_coverage
+    )
+    payload_adapter = Adapters::GithubCommentPayload.new(
+      coverage_results: coverage_results,
+      coverage_detailed_results: coverage_detailed_results,
+      target_files: target_files
+    )
+    formatted_comment = Formatters::Comment.new(payload_adapter: payload_adapter)
+
+    # End Check Run
+    request_object.post(uri: formatted_comment.as_uri, body: formatted_comment.as_payload)
+  end
 end
