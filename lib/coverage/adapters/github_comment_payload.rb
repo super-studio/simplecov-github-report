@@ -43,7 +43,7 @@ module Adapters
     end
 
     def build_detailed_markdown_results
-      return "" if @target_files.size == 0
+      return "There is no target files to cover in this PR" if @target_files.size == 0
 
       target_files_hash = {}
       @target_files.each do |file_name|

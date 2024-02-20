@@ -53,9 +53,14 @@ module Adapters
         | ---- | -------- |
       TEXT
 
-      @coverage_detailed_results.each do |result|
-        text_results += "| #{result["covered_percent"].round(2)} | #{result["filename"].split("/").last(3).join("/")} |\n"
+      if @coverage_detailed_results.size > 0
+        @coverage_detailed_results.each do |result|
+          text_results += "| #{result["covered_percent"].round(2)} | #{result["filename"].split("/").last(3).join("/")} |\n"
+        end
+      else
+        text_results += "| 0 | There is no target files to cover in this PR |\n"
       end
+
       text_results
     end
   end
