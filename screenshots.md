@@ -20,7 +20,7 @@ The PR check UI displays the number of files that were below the minimum coverag
 ![Github PR Check UI](img/simple-cov-check-advanced.png)
 
 **Github Detailed Check UI**
-The detailed check UI displays all files which failed to surpass the minimum coverage threshold
+The detailed check UI displays all files which under the minimum coverage threshold
 ![Github Detailed Check UI](img/simple-cov-check-advanced-detailed.png)
 
 ## Comment on Github PR

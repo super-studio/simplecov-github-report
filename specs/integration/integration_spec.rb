@@ -166,7 +166,7 @@ describe "Check Action integration" do
           minimum_suite_coverage = "49"
           minimum_file_coverage = "99"
           failing_markdown_text = <<~TEXT
-            ### Failed because the following files were below the minimum coverage
+            ### The following files were below the minimum coverage
             | % | File |
             | ---- | -------- |
             | 50.0 | lib/coverage/check_action.rb |

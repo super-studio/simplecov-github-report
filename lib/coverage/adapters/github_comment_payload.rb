@@ -51,7 +51,7 @@ module Adapters
       end
 
       text_results = <<~TEXT
-        ### Failed because the following files were below the minimum coverage (#{@coverage_detailed_results.minimum_coverage}%)
+        ### The following files were below the minimum coverage (#{@coverage_detailed_results.minimum_coverage}%)
         | % | File |
         | ---- | -------- |
       TEXT

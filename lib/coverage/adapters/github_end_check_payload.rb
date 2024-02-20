@@ -48,7 +48,7 @@ module Adapters
 
     def build_detailed_markdown_results
       text_results = <<~TEXT
-        ### Failed because the following files were below the minimum coverage
+        ### The following files were below the minimum coverage
         | % | File |
         | ---- | -------- |
       TEXT
